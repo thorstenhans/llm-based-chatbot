@@ -1,0 +1,18 @@
+[package]
+name = "llm-based-chatbot"
+version = "0.1.0"
+edition = "2021"
+authors = ["Thorsten Hans <thorsten.hans@gmail.com>"]
+license = "Apache-2.0"
+description = "A serverless LLM-based chatbot built with Spin, Rust, and OpenAI-compatible APIs"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+anyhow = "1"
+bytes = "1"
+http-body-util = "0.1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+spin-sdk = "7.0.0"

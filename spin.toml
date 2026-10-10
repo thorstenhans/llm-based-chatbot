@@ -1,0 +1,29 @@
+spin_manifest_version = 2
+
+[application]
+name = "llm-based-chatbot"
+version = "0.1.0"
+authors = ["Thorsten Hans <thorsten.hans@gmail.com>"]
+description = "A serverless LLM-based chatbot built with Spin, Rust, and OpenAI-compatible APIs"
+
+[variables]
+openai_api_key = { default = "" }
+openai_base_url = { default = "https://api.openai.com/v1" }
+openai_model = { default = "gpt-4o-mini" }
+
+[[trigger.http]]
+route = "/..."
+component = "chatbot"
+
+[component.chatbot]
+source = "target/wasm32-wasip2/release/llm_based_chatbot.wasm"
+key_value_stores = ["default"]
+allowed_outbound_hosts = [
+    "https://api.openai.com",
+    "https://api.groq.com",
+    "https://openrouter.ai",
+]
+
+[component.chatbot.build]
+command = "cargo build --target wasm32-wasip2 --release"
+watch = ["src/**/*.rs", "Cargo.toml"]
