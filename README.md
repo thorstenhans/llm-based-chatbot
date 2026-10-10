@@ -11,12 +11,6 @@ This project demonstrates how to bridge the gap between stateless serverless Web
 - **Frontier LLM Integration via Outbound HTTP:** The component constructs OpenAI-compatible JSON payloads and dispatches them to frontier models (OpenAI, Groq, OpenRouter, etc.) using `spin_sdk::http::send`.
 - **Zero Third-Party AI Frameworks:** Implemented in ~150 lines of idiomatic Rust with Serde, compiling to a tiny ~625 KB Wasm binary.
 
-## Prerequisites
-
-- [Spin CLI](https://developer.fermyon.com/spin/v2/install) (v2.0 or later)
-- [Rust toolchain](https://rustup.rs/) with the `wasm32-wasip2` target:
-- An API key for an OpenAI-compatible provider (e.g., [OpenAI](https://platform.openai.com/), [Groq](https://console.groq.com/), or [OpenRouter](https://openrouter.ai/)).
-
 ## Configuration
 
 The application uses Spin application variables configured in `spin.toml`:
@@ -30,7 +24,7 @@ The application uses Spin application variables configured in `spin.toml`:
 ## Build and Run with OpenAI
 
 ```bash
-spin build --up --variable openai_api_key="sk-your-openai-api-key"
+spin up --build --variable openai_api_key="sk-your-openai-api-key"
 ```
 ## Send a Chat Message (`POST /chat`)
 
